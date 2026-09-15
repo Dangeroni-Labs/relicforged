@@ -1,10 +1,9 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": ["S", "K", "T"],
-  "key": {
-    "S": { "item": "minecraft:stick" },
-    "K": { "item": "minecraft:wither_skeleton_skull" },
-    "T": { "item": "relicforged:relic_forging_template" }
-  },
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "minecraft:stick" },
+    { "item": "minecraft:wither_skeleton_skull" },
+    { "item": "relicforged:relic_forging_template" }
+  ],
   "result": { "item": "relicforged:blackened_handle" }
 }
