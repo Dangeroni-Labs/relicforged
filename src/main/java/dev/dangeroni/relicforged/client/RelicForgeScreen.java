@@ -15,14 +15,15 @@ public final class RelicForgeScreen extends AbstractContainerScreen<RelicForgeMe
         super(menu, playerInventory, title);
         imageWidth = 176;
         imageHeight = 166;
-        inventoryLabelY = 84;
+        inventoryLabelX = 8;
+        inventoryLabelY = 72;
     }
 
     @Override
     protected void renderBg(GuiGraphics graphics, float partialTick, int mouseX, int mouseY) {
         int x = leftPos;
         int y = topPos;
-        graphics.blit(BACKGROUND, x, y, 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
+        graphics.blit(BACKGROUND, x, y, 0, 0, imageWidth, imageHeight, 256, 256);
     }
 
     @Override
