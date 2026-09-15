@@ -2,6 +2,7 @@ package dev.dangeroni.relicforged.menu;
 
 import dev.dangeroni.relicforged.block.entity.RelicForgeBlockEntity;
 import dev.dangeroni.relicforged.registry.ModBlocks;
+import dev.dangeroni.relicforged.registry.ModItems;
 import dev.dangeroni.relicforged.registry.ModMenus;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
@@ -12,6 +13,9 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+
+import java.util.function.Predicate;
 
 public final class RelicForgeMenu extends AbstractContainerMenu {
     private static final int WORKSTATION_SLOT_COUNT = RelicForgeBlockEntity.SLOT_COUNT;
@@ -45,10 +49,10 @@ public final class RelicForgeMenu extends AbstractContainerMenu {
         this.blockEntity = blockEntity;
         this.access = access;
 
-        addSlot(new Slot(workstation, RelicForgeBlockEntity.TEMPLATE_SLOT, 80, 17));
-        addSlot(new Slot(workstation, RelicForgeBlockEntity.BASE_SLOT, 44, 53));
-        addSlot(new Slot(workstation, RelicForgeBlockEntity.HANDLE_SLOT, 71, 53));
-        addSlot(new Slot(workstation, RelicForgeBlockEntity.HEAD_SLOT, 98, 53));
+        addSlot(new FilteredSlot(workstation, RelicForgeBlockEntity.TEMPLATE_SLOT, 80, 17, RelicForgeMenu::isTemplate));
+        addSlot(new FilteredSlot(workstation, RelicForgeBlockEntity.BASE_SLOT, 44, 53, RelicForgeMenu::isSupportedDiamondTool));
+        addSlot(new FilteredSlot(workstation, RelicForgeBlockEntity.HANDLE_SLOT, 71, 53, RelicForgeMenu::isBlackenedHandle));
+        addSlot(new FilteredSlot(workstation, RelicForgeBlockEntity.HEAD_SLOT, 98, 53, RelicForgeMenu::isBlackenedHeadOrEdge));
         addSlot(new ResultSlot(workstation, RelicForgeBlockEntity.RESULT_SLOT, 134, 53));
 
         for (int row = 0; row < 3; row++) {
@@ -80,7 +84,23 @@ public final class RelicForgeMenu extends AbstractContainerMenu {
                 if (!moveItemStackTo(stack, PLAYER_INVENTORY_START, PLAYER_INVENTORY_END, false)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (!moveItemStackTo(stack, RelicForgeBlockEntity.TEMPLATE_SLOT, RelicForgeBlockEntity.RESULT_SLOT, false)) {
+            } else if (isTemplate(stack)) {
+                if (!moveItemStackTo(stack, RelicForgeBlockEntity.TEMPLATE_SLOT, RelicForgeBlockEntity.TEMPLATE_SLOT + 1, false)) {
+                    return ItemStack.EMPTY;
+                }
+            } else if (isSupportedDiamondTool(stack)) {
+                if (!moveItemStackTo(stack, RelicForgeBlockEntity.BASE_SLOT, RelicForgeBlockEntity.BASE_SLOT + 1, false)) {
+                    return ItemStack.EMPTY;
+                }
+            } else if (isBlackenedHandle(stack)) {
+                if (!moveItemStackTo(stack, RelicForgeBlockEntity.HANDLE_SLOT, RelicForgeBlockEntity.HANDLE_SLOT + 1, false)) {
+                    return ItemStack.EMPTY;
+                }
+            } else if (isBlackenedHeadOrEdge(stack)) {
+                if (!moveItemStackTo(stack, RelicForgeBlockEntity.HEAD_SLOT, RelicForgeBlockEntity.HEAD_SLOT + 1, false)) {
+                    return ItemStack.EMPTY;
+                }
+            } else {
                 return ItemStack.EMPTY;
             }
 
@@ -103,6 +123,44 @@ public final class RelicForgeMenu extends AbstractContainerMenu {
     @Override
     public boolean stillValid(Player player) {
         return stillValid(access, player, ModBlocks.RELIC_FORGE.get());
+    }
+
+    private static boolean isTemplate(ItemStack stack) {
+        return stack.is(ModItems.RELIC_FORGING_TEMPLATE.get());
+    }
+
+    private static boolean isSupportedDiamondTool(ItemStack stack) {
+        return stack.is(Items.DIAMOND_PICKAXE)
+                || stack.is(Items.DIAMOND_AXE)
+                || stack.is(Items.DIAMOND_SHOVEL)
+                || stack.is(Items.DIAMOND_HOE)
+                || stack.is(Items.DIAMOND_SWORD);
+    }
+
+    private static boolean isBlackenedHandle(ItemStack stack) {
+        return stack.is(ModItems.BLACKENED_HANDLE.get());
+    }
+
+    private static boolean isBlackenedHeadOrEdge(ItemStack stack) {
+        return stack.is(ModItems.BLACKENED_PICK_HEAD.get())
+                || stack.is(ModItems.BLACKENED_AXE_HEAD.get())
+                || stack.is(ModItems.BLACKENED_SHOVEL_HEAD.get())
+                || stack.is(ModItems.BLACKENED_HOE_HEAD.get())
+                || stack.is(ModItems.BLACKENED_EDGE.get());
+    }
+
+    private static final class FilteredSlot extends Slot {
+        private final Predicate<ItemStack> accepts;
+
+        private FilteredSlot(Container container, int slot, int x, int y, Predicate<ItemStack> accepts) {
+            super(container, slot, x, y);
+            this.accepts = accepts;
+        }
+
+        @Override
+        public boolean mayPlace(ItemStack stack) {
+            return accepts.test(stack);
+        }
     }
 
     private final class ResultSlot extends Slot {
