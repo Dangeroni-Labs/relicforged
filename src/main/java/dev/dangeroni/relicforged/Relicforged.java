@@ -4,6 +4,7 @@ import dev.dangeroni.relicforged.registry.ModBlocks;
 import dev.dangeroni.relicforged.registry.ModBlockEntities;
 import dev.dangeroni.relicforged.registry.ModCreativeTabs;
 import dev.dangeroni.relicforged.registry.ModItems;
+import dev.dangeroni.relicforged.registry.ModLootModifiers;
 import dev.dangeroni.relicforged.registry.ModMenus;
 import dev.dangeroni.relicforged.registry.ModRecipes;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -23,5 +24,6 @@ public final class Relicforged {
         ModMenus.MENUS.register(modEventBus);
         ModRecipes.SERIALIZERS.register(modEventBus);
         ModRecipes.TYPES.register(modEventBus);
+        ModLootModifiers.LOOT_MODIFIERS.register(modEventBus);
     }
 }
