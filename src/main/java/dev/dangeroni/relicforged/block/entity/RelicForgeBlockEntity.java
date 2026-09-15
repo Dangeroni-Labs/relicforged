@@ -2,7 +2,8 @@ package dev.dangeroni.relicforged.block.entity;
 
 import dev.dangeroni.relicforged.menu.RelicForgeMenu;
 import dev.dangeroni.relicforged.registry.ModBlockEntities;
-import dev.dangeroni.relicforged.registry.ModItems;
+import dev.dangeroni.relicforged.recipe.RelicForgingRecipe;
+import dev.dangeroni.relicforged.registry.ModRecipes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -17,6 +18,8 @@ import net.minecraft.world.Container;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
 
+import java.util.Optional;
+
 public final class RelicForgeBlockEntity extends BlockEntity implements MenuProvider {
     public static final int TEMPLATE_SLOT = 0;
     public static final int BASE_SLOT = 1;
@@ -28,9 +31,25 @@ public final class RelicForgeBlockEntity extends BlockEntity implements MenuProv
     private boolean recalculatingResult;
     private final SimpleContainer inventory = new SimpleContainer(SLOT_COUNT) {
         @Override
+        public void setItem(int slot, ItemStack stack) {
+            super.setItem(slot, stack);
+            if (slot != RESULT_SLOT) {
+                onInventoryChanged();
+            }
+        }
+
+        @Override
+        public ItemStack removeItem(int slot, int amount) {
+            ItemStack removed = super.removeItem(slot, amount);
+            if (slot != RESULT_SLOT && !removed.isEmpty()) {
+                onInventoryChanged();
+            }
+            return removed;
+        }
+
+        @Override
         public void setChanged() {
             super.setChanged();
-            onInventoryChanged();
         }
     };
 
@@ -53,7 +72,7 @@ public final class RelicForgeBlockEntity extends BlockEntity implements MenuProv
     }
 
     public void takeResult() {
-        if (!matchesTemporaryPickaxeRecipe()) {
+        if (getMatchingRecipe().isEmpty() || inventory.getItem(RESULT_SLOT).isEmpty()) {
             return;
         }
 
@@ -64,7 +83,7 @@ public final class RelicForgeBlockEntity extends BlockEntity implements MenuProv
     }
 
     public boolean canTakeResult() {
-        return matchesTemporaryPickaxeRecipe() && !inventory.getItem(RESULT_SLOT).isEmpty();
+        return getMatchingRecipe().isPresent() && !inventory.getItem(RESULT_SLOT).isEmpty();
     }
 
     public void dropInputContents() {
@@ -120,14 +139,17 @@ public final class RelicForgeBlockEntity extends BlockEntity implements MenuProv
         }
 
         recalculatingResult = true;
-        inventory.setItem(RESULT_SLOT, matchesTemporaryPickaxeRecipe() ? new ItemStack(ModItems.BLACKENED_PICKAXE.get()) : ItemStack.EMPTY);
+        inventory.setItem(RESULT_SLOT, getMatchingRecipe()
+                .map(recipe -> recipe.assemble(inventory, level.registryAccess()))
+                .orElse(ItemStack.EMPTY));
         recalculatingResult = false;
     }
 
-    private boolean matchesTemporaryPickaxeRecipe() {
-        return inventory.getItem(TEMPLATE_SLOT).is(ModItems.RELIC_FORGING_TEMPLATE.get())
-                && inventory.getItem(BASE_SLOT).is(net.minecraft.world.item.Items.DIAMOND_PICKAXE)
-                && inventory.getItem(HANDLE_SLOT).is(ModItems.BLACKENED_HANDLE.get())
-                && inventory.getItem(HEAD_SLOT).is(ModItems.BLACKENED_PICK_HEAD.get());
+    private Optional<RelicForgingRecipe> getMatchingRecipe() {
+        if (level == null) {
+            return Optional.empty();
+        }
+
+        return level.getRecipeManager().getRecipeFor(ModRecipes.relicForgingType(), inventory, level);
     }
 }

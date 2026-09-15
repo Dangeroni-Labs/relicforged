@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["O W", "OQW", "   "],
+  "key": {
+    "O": { "item": "minecraft:obsidian" },
+    "W": { "tag": "relicforged:nether_wood" },
+    "Q": { "item": "minecraft:quartz_block" }
+  },
+  "result": { "item": "relicforged:blackened_axe_head" }
+}

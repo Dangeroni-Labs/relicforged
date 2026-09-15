@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["OMO", "BEB", "OMO"],
+  "key": {
+    "O": { "item": "minecraft:obsidian" },
+    "M": { "item": "minecraft:magma_cream" },
+    "B": { "item": "minecraft:magma_block" },
+    "E": { "item": "minecraft:ender_pearl" }
+  },
+  "result": { "item": "relicforged:relic_forging_template" }
+}

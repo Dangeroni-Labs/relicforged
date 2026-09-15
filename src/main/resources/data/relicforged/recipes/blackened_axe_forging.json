@@ -1,0 +1,8 @@
+{
+  "type": "relicforged:relic_forging",
+  "template": { "item": "relicforged:relic_forging_template" },
+  "base": { "item": "minecraft:diamond_axe" },
+  "handle": { "item": "relicforged:blackened_handle" },
+  "head": { "item": "relicforged:blackened_axe_head" },
+  "result": { "item": "relicforged:blackened_axe" }
+}
