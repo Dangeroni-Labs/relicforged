@@ -1,6 +1,7 @@
 package dev.dangeroni.relicforged;
 
 import dev.dangeroni.relicforged.registry.ModBlocks;
+import dev.dangeroni.relicforged.registry.ModCreativeTabs;
 import dev.dangeroni.relicforged.registry.ModItems;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -14,5 +15,6 @@ public final class Relicforged {
         IEventBus modEventBus = context.getModEventBus();
         ModItems.ITEMS.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
+        ModCreativeTabs.CREATIVE_MODE_TABS.register(modEventBus);
     }
 }

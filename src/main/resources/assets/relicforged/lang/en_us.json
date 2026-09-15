@@ -11,5 +11,6 @@
   "item.relicforged.blackened_hoe": "Blackened Hoe",
   "item.relicforged.blackened_sword": "Blackened Sword",
   "item.relicforged.relic_forging_template": "Relic Forging Template",
-  "block.relicforged.relic_forge": "Relic Forge"
+  "block.relicforged.relic_forge": "Relic Forge",
+  "itemGroup.relicforged": "Relicforged"
 }

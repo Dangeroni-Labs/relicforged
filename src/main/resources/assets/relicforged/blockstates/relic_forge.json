@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "relicforged:block/relic_forge" },
+    "facing=east": { "model": "relicforged:block/relic_forge", "y": 90 },
+    "facing=south": { "model": "relicforged:block/relic_forge", "y": 180 },
+    "facing=west": { "model": "relicforged:block/relic_forge", "y": 270 }
+  }
+}

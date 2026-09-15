@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "north": "relicforged:block/relic_forge_front",
+    "south": "relicforged:block/relic_forge_back",
+    "east": "relicforged:block/relic_forge_side",
+    "west": "relicforged:block/relic_forge_side",
+    "up": "relicforged:block/relic_forge_top",
+    "down": "relicforged:block/relic_forge_bottom",
+    "particle": "relicforged:block/relic_forge_side"
+  }
+}
