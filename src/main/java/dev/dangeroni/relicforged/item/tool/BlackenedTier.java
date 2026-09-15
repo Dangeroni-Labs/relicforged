@@ -9,12 +9,12 @@ public enum BlackenedTier implements Tier {
 
     @Override
     public int getUses() {
-        return 2400;
+        return 2378;
     }
 
     @Override
     public float getSpeed() {
-        return 9.5F;
+        return 10.0F;
     }
 
     @Override
