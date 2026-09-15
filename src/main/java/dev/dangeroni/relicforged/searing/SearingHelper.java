@@ -12,11 +12,15 @@ public final class SearingHelper {
     }
 
     public static boolean isBlackenedTool(ItemStack stack) {
-        return stack.is(ModItems.BLACKENED_PICKAXE.get())
-                || stack.is(ModItems.BLACKENED_AXE.get())
-                || stack.is(ModItems.BLACKENED_SHOVEL.get())
+        return isSearingBlockTool(stack)
                 || stack.is(ModItems.BLACKENED_HOE.get())
                 || stack.is(ModItems.BLACKENED_SWORD.get());
+    }
+
+    public static boolean isSearingBlockTool(ItemStack stack) {
+        return stack.is(ModItems.BLACKENED_PICKAXE.get())
+                || stack.is(ModItems.BLACKENED_AXE.get())
+                || stack.is(ModItems.BLACKENED_SHOVEL.get());
     }
 
     public static boolean isSearingEnabled(ItemStack stack) {

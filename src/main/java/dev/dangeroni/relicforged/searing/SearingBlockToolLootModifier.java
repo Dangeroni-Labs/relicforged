@@ -2,7 +2,6 @@ package dev.dangeroni.relicforged.searing;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import dev.dangeroni.relicforged.registry.ModItems;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
@@ -16,11 +15,11 @@ import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
 import org.jetbrains.annotations.NotNull;
 
-public final class SearingPickaxeLootModifier extends LootModifier {
-    public static final Codec<SearingPickaxeLootModifier> CODEC = RecordCodecBuilder.create(instance -> codecStart(instance)
-            .apply(instance, SearingPickaxeLootModifier::new));
+public final class SearingBlockToolLootModifier extends LootModifier {
+    public static final Codec<SearingBlockToolLootModifier> CODEC = RecordCodecBuilder.create(instance -> codecStart(instance)
+            .apply(instance, SearingBlockToolLootModifier::new));
 
-    public SearingPickaxeLootModifier(net.minecraft.world.level.storage.loot.predicates.LootItemCondition[] conditions) {
+    public SearingBlockToolLootModifier(net.minecraft.world.level.storage.loot.predicates.LootItemCondition[] conditions) {
         super(conditions);
     }
 
@@ -36,7 +35,7 @@ public final class SearingPickaxeLootModifier extends LootModifier {
         }
 
         ItemStack tool = context.getParam(LootContextParams.TOOL);
-        if (!tool.is(ModItems.BLACKENED_PICKAXE.get())
+        if (!SearingHelper.isSearingBlockTool(tool)
                 || !SearingHelper.isSearingEnabled(tool)
                 || EnchantmentHelper.getItemEnchantmentLevel(Enchantments.SILK_TOUCH, tool) > 0) {
             return generatedLoot;
