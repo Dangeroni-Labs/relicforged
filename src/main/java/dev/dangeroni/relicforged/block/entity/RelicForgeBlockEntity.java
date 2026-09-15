@@ -29,6 +29,7 @@ public final class RelicForgeBlockEntity extends BlockEntity implements MenuProv
     public static final int SLOT_COUNT = 5;
 
     private boolean recalculatingResult;
+    private boolean consumingResultInputs;
     private final SimpleContainer inventory = new SimpleContainer(SLOT_COUNT) {
         @Override
         public void setItem(int slot, ItemStack stack) {
@@ -72,13 +73,18 @@ public final class RelicForgeBlockEntity extends BlockEntity implements MenuProv
     }
 
     public void takeResult() {
-        if (getMatchingRecipe().isEmpty() || inventory.getItem(RESULT_SLOT).isEmpty()) {
+        if (level == null || level.isClientSide || getMatchingRecipe().isEmpty()) {
             return;
         }
 
-        inventory.removeItem(BASE_SLOT, 1);
-        inventory.removeItem(HANDLE_SLOT, 1);
-        inventory.removeItem(HEAD_SLOT, 1);
+        consumingResultInputs = true;
+        try {
+            inventory.removeItem(BASE_SLOT, 1);
+            inventory.removeItem(HANDLE_SLOT, 1);
+            inventory.removeItem(HEAD_SLOT, 1);
+        } finally {
+            consumingResultInputs = false;
+        }
         recalculateResult();
     }
 
@@ -127,7 +133,7 @@ public final class RelicForgeBlockEntity extends BlockEntity implements MenuProv
     }
 
     private void onInventoryChanged() {
-        if (level != null && !level.isClientSide && !recalculatingResult) {
+        if (level != null && !level.isClientSide && !recalculatingResult && !consumingResultInputs) {
             recalculateResult();
         }
         setChanged();
