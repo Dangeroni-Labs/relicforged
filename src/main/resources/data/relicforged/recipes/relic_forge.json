@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["OAO", "MSM", "OAO"],
+  "key": {
+    "O": { "item": "minecraft:obsidian" },
+    "A": { "item": "minecraft:amethyst_shard" },
+    "M": { "item": "minecraft:magma_block" },
+    "S": { "item": "minecraft:smithing_table" }
+  },
+  "result": {
+    "item": "relicforged:relic_forge",
+    "count": 1
+  }
+}
