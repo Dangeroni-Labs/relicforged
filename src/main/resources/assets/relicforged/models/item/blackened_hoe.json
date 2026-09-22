@@ -1,3 +1,4 @@
 {
-  "parent": "relicforged:item/blackened/blackened_hoe"
+  "parent": "minecraft:item/handheld",
+  "textures": { "layer0": "relicforged:item/blackened/blackened_hoe" }
 }
