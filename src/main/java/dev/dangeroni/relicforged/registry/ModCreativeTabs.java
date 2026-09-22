@@ -16,6 +16,12 @@ public final class ModCreativeTabs {
             .icon(() -> new ItemStack(ModItems.BLACKENED_PICKAXE.get()))
             .displayItems((parameters, output) -> {
                 output.accept(ModItems.RELIC_FORGE.get());
+                output.accept(ModItems.RESONANT_ALLOY.get());
+                output.accept(ModItems.RESONANT_PICKAXE.get());
+                output.accept(ModItems.RESONANT_AXE.get());
+                output.accept(ModItems.RESONANT_SHOVEL.get());
+                output.accept(ModItems.RESONANT_HOE.get());
+                output.accept(ModItems.RESONANT_SWORD.get());
                 output.accept(ModItems.RELIC_FORGING_TEMPLATE.get());
                 output.accept(ModItems.BLACKENED_HANDLE.get());
                 output.accept(ModItems.BLACKENED_PICK_HEAD.get());

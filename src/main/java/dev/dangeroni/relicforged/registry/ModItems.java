@@ -2,6 +2,7 @@ package dev.dangeroni.relicforged.registry;
 
 import dev.dangeroni.relicforged.Relicforged;
 import dev.dangeroni.relicforged.item.tool.BlackenedTier;
+import dev.dangeroni.relicforged.item.tool.ResonantTier;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.HoeItem;
@@ -17,6 +18,13 @@ public final class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Relicforged.MOD_ID);
 
     public static final RegistryObject<Item> RELIC_FORGE = ITEMS.register("relic_forge", () -> new BlockItem(ModBlocks.RELIC_FORGE.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> RESONANT_ALLOY = ITEMS.register("resonant_alloy", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RESONANT_PICKAXE = ITEMS.register("resonant_pickaxe", () -> new PickaxeItem(ResonantTier.INSTANCE, 1, -2.8F, new Item.Properties()));
+    public static final RegistryObject<Item> RESONANT_AXE = ITEMS.register("resonant_axe", () -> new AxeItem(ResonantTier.INSTANCE, 6.0F, -3.1F, new Item.Properties()));
+    public static final RegistryObject<Item> RESONANT_SHOVEL = ITEMS.register("resonant_shovel", () -> new ShovelItem(ResonantTier.INSTANCE, 1.5F, -3.0F, new Item.Properties()));
+    public static final RegistryObject<Item> RESONANT_HOE = ITEMS.register("resonant_hoe", () -> new HoeItem(ResonantTier.INSTANCE, -2, -1.0F, new Item.Properties()));
+    public static final RegistryObject<Item> RESONANT_SWORD = ITEMS.register("resonant_sword", () -> new SwordItem(ResonantTier.INSTANCE, 4, -2.4F, new Item.Properties()));
 
     public static final RegistryObject<Item> BLACKENED_HANDLE = ITEMS.register("blackened_handle", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BLACKENED_PICK_HEAD = ITEMS.register("blackened_pick_head", () -> new Item(new Item.Properties()));

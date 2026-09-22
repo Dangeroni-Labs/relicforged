@@ -1,4 +1,10 @@
 {
+  "item.relicforged.resonant_alloy": "Resonant Alloy",
+  "item.relicforged.resonant_pickaxe": "Resonant Pickaxe",
+  "item.relicforged.resonant_axe": "Resonant Axe",
+  "item.relicforged.resonant_shovel": "Resonant Shovel",
+  "item.relicforged.resonant_hoe": "Resonant Hoe",
+  "item.relicforged.resonant_sword": "Resonant Sword",
   "item.relicforged.blackened_handle": "Blackened Handle",
   "item.relicforged.blackened_pick_head": "Blackened Pick Head",
   "item.relicforged.blackened_axe_head": "Blackened Axe Head",

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["R", "S", "S"],
+  "key": {
+    "R": { "item": "relicforged:resonant_alloy" },
+    "S": { "item": "minecraft:stick" }
+  },
+  "result": { "item": "relicforged:resonant_shovel" }
+}

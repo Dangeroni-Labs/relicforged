@@ -1,4 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": { "layer0": "relicforged:item/blackened_pick_head" }
+  "parent": "relicforged:item/blackened/blackened_pick_head"
 }

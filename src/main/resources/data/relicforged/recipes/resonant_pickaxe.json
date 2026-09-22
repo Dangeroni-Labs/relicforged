@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["RRR", " S ", " S "],
+  "key": {
+    "R": { "item": "relicforged:resonant_alloy" },
+    "S": { "item": "minecraft:stick" }
+  },
+  "result": { "item": "relicforged:resonant_pickaxe" }
+}
