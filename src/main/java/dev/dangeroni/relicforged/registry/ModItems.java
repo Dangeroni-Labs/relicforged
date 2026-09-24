@@ -39,7 +39,7 @@ public final class ModItems {
     public static final RegistryObject<Item> BLACKENED_AXE = ITEMS.register("blackened_axe", () -> new AxeItem(BlackenedTier.INSTANCE, 5.0F, -3.0F, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> BLACKENED_SHOVEL = ITEMS.register("blackened_shovel", () -> new ShovelItem(BlackenedTier.INSTANCE, 1.5F, -3.0F, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> BLACKENED_HOE = ITEMS.register("blackened_hoe", () -> new HoeItem(BlackenedTier.INSTANCE, -4, 0.0F, new Item.Properties().fireResistant()));
-    public static final RegistryObject<Item> BLACKENED_SWORD = ITEMS.register("blackened_sword", () -> new SwordItem(BlackenedTier.INSTANCE, 4, -2.6F, new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> BLACKENED_SWORD = ITEMS.register("blackened_sword", () -> new SwordItem(BlackenedTier.INSTANCE, 3, -2.4F, new Item.Properties().fireResistant()));
 
     private ModItems() {
     }

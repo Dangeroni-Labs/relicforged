@@ -1,10 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": ["OAO", " M ", "   "],
+  "pattern": ["ORO", " M ", " B "],
   "key": {
     "O": { "item": "minecraft:obsidian" },
-    "A": { "item": "minecraft:amethyst_shard" },
-    "M": { "item": "minecraft:magma_block" }
+    "R": { "item": "relicforged:resonant_alloy" },
+    "M": { "item": "minecraft:magma_block" },
+    "B": { "item": "minecraft:blaze_rod" }
   },
   "result": { "item": "relicforged:blackened_edge" }
 }

@@ -1,10 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": ["OAO", " M ", " M "],
+  "pattern": ["OAO", " R ", " M "],
   "key": {
     "O": { "item": "minecraft:obsidian" },
     "A": { "item": "minecraft:ancient_debris" },
-    "M": { "item": "minecraft:magma_cream" }
+    "M": { "item": "minecraft:magma_cream" },
+    "R": { "item": "relicforged:resonant_alloy" }
   },
   "result": { "item": "relicforged:blackened_pick_head" }
 }

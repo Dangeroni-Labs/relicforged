@@ -1,9 +1,10 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    { "item": "minecraft:stick" },
-    { "item": "minecraft:wither_skeleton_skull" },
-    { "item": "relicforged:relic_forging_template" }
-  ],
-  "result": { "item": "relicforged:blackened_handle" }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [" S ", " R ", " B "],
+  "key": {
+    "S": { "item": "minecraft:wither_skeleton_skull" },
+    "R": { "item": "relicforged:resonant_alloy" },
+    "B": { "item": "minecraft:blaze_rod" }
+  },
+  "result": { "item": "relicforged:blackened_handle", "count": 2 }
 }

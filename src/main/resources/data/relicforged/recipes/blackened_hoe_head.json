@@ -1,10 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": ["ONO", " M ", "   "],
+  "pattern": ["ONO", " M ", " R "],
   "key": {
     "O": { "item": "minecraft:obsidian" },
     "N": { "item": "minecraft:nether_wart" },
-    "M": { "item": "minecraft:magma_cream" }
+    "M": { "item": "minecraft:magma_cream" },
+    "R": { "item": "relicforged:resonant_alloy" }
   },
   "result": { "item": "relicforged:blackened_hoe_head" }
 }

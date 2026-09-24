@@ -1,10 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": ["OGO", " M ", "   "],
+  "pattern": ["OGO", " M ", " R "],
   "key": {
     "O": { "item": "minecraft:obsidian" },
     "G": { "item": "minecraft:ghast_tear" },
-    "M": { "item": "minecraft:magma_cream" }
+    "M": { "item": "minecraft:magma_cream" },
+    "R": { "item": "relicforged:resonant_alloy" }
   },
   "result": { "item": "relicforged:blackened_shovel_head" }
 }

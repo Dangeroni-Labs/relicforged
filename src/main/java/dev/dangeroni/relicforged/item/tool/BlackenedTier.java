@@ -9,12 +9,12 @@ public enum BlackenedTier implements Tier {
 
     @Override
     public int getUses() {
-        return 2378;
+        return 1800;
     }
 
     @Override
     public float getSpeed() {
-        return 10.0F;
+        return 9.5F;
     }
 
     @Override
@@ -34,6 +34,6 @@ public enum BlackenedTier implements Tier {
 
     @Override
     public Ingredient getRepairIngredient() {
-        return Ingredient.of(ModItems.BLACKENED_HANDLE.get());
+        return Ingredient.of(ModItems.RESONANT_ALLOY.get());
     }
 }
