@@ -1,6 +1,7 @@
 package dev.dangeroni.relicforged.registry;
 
 import dev.dangeroni.relicforged.Relicforged;
+import dev.dangeroni.relicforged.item.ResonanceCompassItem;
 import dev.dangeroni.relicforged.item.tool.BlackenedTier;
 import dev.dangeroni.relicforged.item.tool.ResonantTier;
 import net.minecraft.world.item.AxeItem;
@@ -21,6 +22,7 @@ public final class ModItems {
 
     public static final RegistryObject<Item> RESONANT_ALLOY = ITEMS.register("resonant_alloy", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> AMETHYST_FRAGMENT = ITEMS.register("amethyst_fragment", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RESONANCE_COMPASS = ITEMS.register("resonance_compass", () -> new ResonanceCompassItem(new Item.Properties()));
     public static final RegistryObject<Item> RESONANT_PICKAXE = ITEMS.register("resonant_pickaxe", () -> new PickaxeItem(ResonantTier.INSTANCE, 1, -2.8F, new Item.Properties()));
     public static final RegistryObject<Item> RESONANT_AXE = ITEMS.register("resonant_axe", () -> new AxeItem(ResonantTier.INSTANCE, 6.0F, -3.1F, new Item.Properties()));
     public static final RegistryObject<Item> RESONANT_SHOVEL = ITEMS.register("resonant_shovel", () -> new ShovelItem(ResonantTier.INSTANCE, 1.5F, -3.0F, new Item.Properties()));

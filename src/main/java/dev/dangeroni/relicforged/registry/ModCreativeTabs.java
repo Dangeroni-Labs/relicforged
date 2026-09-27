@@ -18,6 +18,7 @@ public final class ModCreativeTabs {
                 output.accept(ModItems.RELIC_FORGE.get());
                 output.accept(ModItems.RESONANT_ALLOY.get());
                 output.accept(ModItems.AMETHYST_FRAGMENT.get());
+                output.accept(ModItems.RESONANCE_COMPASS.get());
                 output.accept(ModItems.RESONANT_PICKAXE.get());
                 output.accept(ModItems.RESONANT_AXE.get());
                 output.accept(ModItems.RESONANT_SHOVEL.get());

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["RAR", "ACA", "RAR"],
+  "key": {
+    "R": { "item": "relicforged:resonant_alloy" },
+    "A": { "item": "minecraft:amethyst_shard" },
+    "C": { "item": "minecraft:compass" }
+  },
+  "result": { "item": "relicforged:resonance_compass", "count": 1 }
+}

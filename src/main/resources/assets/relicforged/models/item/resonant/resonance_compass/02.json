@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "relicforged:item/resonant/resonant_compass/resonant_compass_02"
+  }
+}
